@@ -20,4 +20,23 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('api')->group(function () {
     Route::get("/paragraph/{uuid}", [\App\Http\Controllers\API\ParagraphController::class, "show"]);
+
+
+    Route::post(
+        "/questions",
+        [
+            \App\Http\Controllers\API\SaveQuestionsController::class,
+            "saveQuestions"
+        ])
+        ->name("questions.saveQuestions");
 });
+
+
+//Verb          Path                        Action  Route Name
+//GET           /users                      index   users.index
+//GET           /users/create               create  users.create
+//POST          /users                      store   users.store
+//GET           /users/{user}               show    users.show
+//GET           /users/{user}/edit          edit    users.edit
+//PUT|PATCH     /users/{user}               update  users.update
+//DELETE        /users/{user}               destroy users.destroy
