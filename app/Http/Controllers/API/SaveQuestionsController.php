@@ -9,7 +9,6 @@ use App\Services\QuestionService;
 use App\Supporters\Responses\ServerErrorResponse;
 use App\Supporters\Responses\SuccessfulResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Throwable;
 
 class SaveQuestionsController extends Controller
@@ -29,9 +28,7 @@ class SaveQuestionsController extends Controller
         $this->errorResponse = $errorResponse;
     }
 
-    /**
-     * @throws Throwable
-     */
+
     public function saveQuestions(SaveQuestionsRequest $request): JsonResponse
     {
         try {
