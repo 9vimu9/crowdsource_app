@@ -40,3 +40,9 @@ Route::middleware('api')->group(function () {
 //GET           /users/{user}/edit          edit    users.edit
 //PUT|PATCH     /users/{user}               update  users.update
 //DELETE        /users/{user}               destroy users.destroy
+
+//GET retrieves resources.
+//POST submits new data to the server.
+//PUT updates existing data.
+//DELETE removes data.
+//https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/

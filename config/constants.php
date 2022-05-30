@@ -27,5 +27,6 @@ return [
         "celebrity" => 3,//https://www.saaravita.lk/bollyhollywood/105
         "travel" => 4,//https://www.saaravita.lk/travel/110
         "news" => 5,//https://www.lankadeepa.lk/top_story/10
-    ]
+    ],
+    "server_error_message" => "Internal Server Error",
 ];
