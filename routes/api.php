@@ -19,7 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('api')->group(function () {
-    Route::get("/paragraph/{uuid}", [\App\Http\Controllers\API\ParagraphController::class, "show"]);
 
 
     Route::post(
