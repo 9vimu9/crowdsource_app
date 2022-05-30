@@ -2,6 +2,7 @@
 
 namespace App\DTOs;
 
+use Illuminate\Database\Eloquent\Model;
 use Spatie\DataTransferObject\DataTransferObject;
 
 class ParagraphDTO extends DataTransferObject

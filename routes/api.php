@@ -20,6 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('api')->group(function () {
 
+    Route::get("/paragraph/{id}", [\App\Http\Controllers\API\ParagraphController::class, "show"]);
+    Route::get("/paragraph-new", [\App\Http\Controllers\API\ParagraphController::class, "newParagraph"]);
+
 
     Route::post(
         "/questions",
