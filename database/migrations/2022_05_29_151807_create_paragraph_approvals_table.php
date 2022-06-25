@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('paragraph_approvals', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('paragraph_id');
+            $table->unsignedBigInteger('paragraph_id');
             $table->foreign('paragraph_id')->references('id')
                 ->on((new \App\Models\Paragraph())->getTable())
                 ->onDelete('cascade');

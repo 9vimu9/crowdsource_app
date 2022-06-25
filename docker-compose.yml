@@ -27,7 +27,7 @@ services:
         restart: unless-stopped
         tty: true
         ports:
-            - "8089:80"
+            - "8112:80"
             - "445:443"
         volumes:
             - ./:/var/www
@@ -37,22 +37,18 @@ services:
 
     #MySQL Service
     db:
-        image: mysql:5.7.22
-        container_name: crowd_source_app_SQL_server
+        image: mysql:8.0
+        container_name: crowd_source_mysql_server
         restart: unless-stopped
         tty: true
         ports:
             - "3316:3306"
         environment:
-            MYSQL_DATABASE: croudsource_db
-            MYSQL_ROOT_PASSWORD: pass
-            MYSQL_USER: user
-            MYSQL_PASSWORD: pass
-            SERVICE_TAGS: dev
-            SERVICE_NAME: mysql
+            MYSQL_ROOT_PASSWORD: root
         volumes:
             - dbdata:/var/lib/mysql/
             - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+            - ./docker/mysql/mysql-files:/var/lib/mysql-files
         networks:
             - crowd_source_app_network
 

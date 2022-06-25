@@ -26,7 +26,7 @@ return new class extends Migration
                 ->on((new \App\Models\User())->getTable())
                 ->onDelete('cascade');
 
-            $table->bigInteger('paragraph_id');
+            $table->unsignedBigInteger('paragraph_id');
             $table->foreign('paragraph_id')->references('id')
                 ->on((new \App\Models\Paragraph())->getTable())
                 ->onDelete('cascade');
