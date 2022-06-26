@@ -7,6 +7,7 @@ import router from './router'
 
 import QuestionsCreate from './components/questions/QuestionsCreate.vue'
 
+import '../css/app.css';
 
 createApp({
     components: {
