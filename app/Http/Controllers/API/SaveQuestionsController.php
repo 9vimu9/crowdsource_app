@@ -3,29 +3,19 @@
 namespace App\Http\Controllers\API;
 
 use App\DTOs\QuestionInputDTO;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\SaveQuestionsRequest;
 use App\Services\QuestionService;
-use App\Supporters\Responses\ServerErrorResponse;
-use App\Supporters\Responses\SuccessfulResponse;
 use Illuminate\Http\JsonResponse;
 use Throwable;
 
-class SaveQuestionsController extends Controller
+class SaveQuestionsController extends CustomAPIBaseController
 {
     private QuestionService $questionService;
-    private SuccessfulResponse $successfulResponse;
-    private ServerErrorResponse $errorResponse;
 
-    public function __construct(
-        QuestionService $questionService,
-        SuccessfulResponse $successfulResponse,
-        ServerErrorResponse $errorResponse
-    )
+    public function __construct(QuestionService $questionService)
     {
+        parent::__construct();
         $this->questionService = $questionService;
-        $this->successfulResponse = $successfulResponse;
-        $this->errorResponse = $errorResponse;
     }
 
 

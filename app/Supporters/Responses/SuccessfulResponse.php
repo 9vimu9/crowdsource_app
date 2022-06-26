@@ -6,7 +6,7 @@ use Illuminate\Http\JsonResponse;
 
 class SuccessfulResponse extends Response
 {
-    private ?array $dataArray=null;
+    private array $dataArray=[];
 
     public function data(array $data): self
     {
@@ -18,7 +18,8 @@ class SuccessfulResponse extends Response
     public function response(): JsonResponse
     {
         return response()->json([
-            'data' => is_null($this->dataArray) ? [] : $this->dataArray
+            'data' => $this->dataArray,
+            'is_error' => 0,
         ]);
     }
 }
