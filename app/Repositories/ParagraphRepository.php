@@ -32,6 +32,7 @@ class ParagraphRepository
     {
         return new ParagraphDTO(
             id: $model->id,
+            articleID: $model->article_id,
             paragraph: $model->paragraph,
             order: $model->order,
             approved: $model->approved,
@@ -46,7 +47,7 @@ class ParagraphRepository
     {
         $paragraph = $this->paragraph->newQuery()
             ->where("approved",constantValue("paragraph_approving.approved"))
-            ->where("no_more_questions",constantValue("questions_from_paragraph.no_more_to_ask"));
+            ->where("no_more_questions",constantValue("questions_from_paragraph.more_to_ask"));
 
         if($random){
             $paragraph = $paragraph->inRandomOrder();

@@ -30,3 +30,18 @@ class SaveQuestionsRequest extends FormRequest
         ];
     }
 }
+/*sample payload
+{
+   "questions":[
+      {
+         "question":"test",
+         "answer":"sdsada"
+      },
+      {
+         "question":"test 1",
+         "answer":"sdsd"
+      }
+   ],
+   "paragraph_id":144
+}
+*/

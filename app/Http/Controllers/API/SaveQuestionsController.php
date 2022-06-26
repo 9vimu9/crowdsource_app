@@ -38,7 +38,8 @@ class SaveQuestionsController extends Controller
                     question: $question["question"],
                     answer: $question["answer"],
                     paragraphID: $request->get("paragraph_id"),
-                    userID: 1,
+                    userID: 2,
+//                    userID: auth()->user()->id,
                 ));
 
             }

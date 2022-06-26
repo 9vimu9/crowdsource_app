@@ -60,3 +60,4 @@ networks:
 volumes:
     dbdata:
         driver: local
+# docker-compose down -v && docker-compose up -d
