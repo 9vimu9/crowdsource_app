@@ -1,7 +1,15 @@
 require('./bootstrap');
 
-import Alpine from 'alpinejs';
+require('alpinejs');
 
-window.Alpine = Alpine;
+import { createApp } from 'vue';
+import router from './router'
 
-Alpine.start();
+import QuestionsCreate from './components/questions/QuestionsCreate.vue'
+
+
+createApp({
+    components: {
+        QuestionsCreate
+    }
+}).use(router).mount('#app')

@@ -24,3 +24,7 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
+
+Route::view('/{any}', 'dashboard')
+    ->middleware(['auth'])
+    ->where('any', '.*');
