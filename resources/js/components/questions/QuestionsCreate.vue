@@ -12,9 +12,8 @@
                 <textarea
                     id="comment"
                     rows="4"
-                    class="px-0 w-full text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
-                    placeholder="ප්‍රශ්නය මෙතන type කරන්න">
-                </textarea>
+                    class="px-0 w-full text-lg text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
+                    placeholder="ප්‍රශ්නය මෙතන type කරන්න"></textarea>
         </div>
         <div class="flex justify-between items-center py-2 px-3 border-t dark:border-gray-600">
             <button type="submit"
@@ -22,7 +21,8 @@
                 Save / සුරකින්න
             </button>
             <div>
-                <p class="ml-auto text-lg text-white  text-right "><b><i>පිළිතුර :</i></b> {{ currentSelectedText }} </p>
+                <p class="ml-auto text-lg text-white  text-right "><b><i>පිළිතුර :</i></b> {{ currentSelectedText }}
+                </p>
             </div>
         </div>
     </div>
@@ -33,9 +33,8 @@
                 <textarea
                     id="comment"
                     rows="4"
-                    class="px-0 w-full text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
-                    placeholder="ප්‍රශ්නය මෙතන type කරන්න">
-               න් කළේය. කෙසේ වෙතත්, ඔවුන් දෙදෙනා නැවතත් කරන් ජෝහර්ගේ 50 වැනි උපන්දින සාදයේදී එකට  </textarea>
+                    class="px-0 w-full text-lg text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
+                    placeholder="ප්‍රශ්නය මෙතන type කරන්න">න් කළේය. කෙසේ වෙතත්, ඔවුන් දෙදෙනා නැවතත් කරන් ජෝහර්ගේ 50 වැනි උපන්දින සාදයේදී එකට  </textarea>
         </div>
 
         <div class="flex justify-between items-center py-2 px-3 border-t dark:border-gray-600">
@@ -99,11 +98,26 @@ export default {
 
         mouseup() {
             const selectedAnswer = this.getSelectionText()
+            if (!selectedAnswer) {
+                return
+            }
             const result = selectedAnswer.split(" ").every(val => this.paragraph.paragraph.split(" ").includes(val))
 
-            if(result){
+            if (result) {
+                this.$toast.clear();
                 this.currentSelectedText = selectedAnswer
+            } else {
+                this.$toast.open({
+                    message: "සම්පුර්ණ වචනයම select කරන්න.",
+                    type: "error",
+                    duration: 5000,
+                    dismissible: true,
+                    position: 'top',
+
+                })
             }
+
+
         },
         getSelectionText() {
             if (window.getSelection) {
