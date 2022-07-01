@@ -1,7 +1,8 @@
 <template>
     <h3 class="ml-auto text-lg text-black mb-1  ">ප්‍රශ්න සෑදීමට කියවිය යුතු ඡේදය </h3>
-    <div  class="p-6 mb-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-400 dark:hover:bg-gray-400 hover:bg-gray-400 dark:border-gray-700 lg:mb-0">
-        <p class="font-normal text-black">
+    <div
+        class="p-6 mb-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-400 dark:hover:bg-gray-400 hover:bg-gray-400 dark:border-gray-700 lg:mb-0">
+        <p class="font-normal text-black" @mouseup="mouseup">
             {{ paragraph.paragraph }}
         </p>
     </div>
@@ -16,10 +17,13 @@
                 </textarea>
         </div>
         <div class="flex justify-between items-center py-2 px-3 border-t dark:border-gray-600">
-            <button type="submit" class="inline-flex items-center py-2.5 px-4 text-lg font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+            <button type="submit"
+                    class="inline-flex items-center py-2.5 px-4 text-lg font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
                 Save / සුරකින්න
             </button>
-            <div></div>
+            <div>
+                <p class="ml-auto text-lg text-white  text-right "><b><i>පිළිතුර :</i></b> {{ currentSelectedText }} </p>
+            </div>
         </div>
     </div>
     <hr>
@@ -75,8 +79,13 @@ import useParagraphs from '../../composables/paragraphs'
 // import useQuestions from '../../composables/questions'
 
 import {onMounted} from 'vue';
+let currentSelectedText;
+
 
 export default {
+    data(){
+        return {currentSelectedText}
+    },
     setup() {
         const {errors, paragraph, newParagraph} = useParagraphs()
 
@@ -85,6 +94,27 @@ export default {
         return {
             paragraph,
         }
-    }
+    },
+    methods: {
+
+        mouseup() {
+            const selectedAnswer = this.getSelectionText()
+            const result = selectedAnswer.split(" ").every(val => this.paragraph.paragraph.split(" ").includes(val))
+
+            if(result){
+                this.currentSelectedText = selectedAnswer
+            }
+        },
+        getSelectionText() {
+            if (window.getSelection) {
+                return window.getSelection().toString();
+            } else if (document.selection && document.selection.type !== "Control") {
+                return document.selection.createRange().text;
+            }
+            return "";
+        }
+
+
+    },
 }
 </script>
