@@ -27,7 +27,8 @@ Route::middleware('api')->group(function () {
     Route::get("/paragraph-new", [\App\Http\Controllers\API\v2\ParagraphController::class, "newParagraph"]);
 
 
-    Route::post("/questions",[SaveQuestionsController::class,"saveQuestions"])->name("questions.saveQuestions");
+//    Route::post("/questions",[SaveQuestionsController::class,"saveQuestions"])->name("questions.saveQuestions");
+    Route::post("/questions",[\App\Http\Controllers\API\v2\QuestionsController::class,"store"])->name("questions.saveQuestions");
 });
 
 
